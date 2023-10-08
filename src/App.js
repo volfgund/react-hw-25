@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import PostList from './Pages/PostList';
+import Post from './Pages/Post';
+
+const NotFound = () => (
+  <div>
+    <h2>404 - Page not found</h2>
+  </div>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<PostList />} />
+        <Route path="/posts/:postId" element={<Post />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
